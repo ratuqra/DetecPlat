@@ -1,40 +1,152 @@
-# DetecPlat Documentation
+# DetecPlat: Vehicle License Plate Detection and Recognition System
 
-## Project Overview
+## 1. Project Overview
 
-DetecPlat is a vehicle license plate detection and recognition application developed using Python, OpenCV, and PyQt5.
+DetecPlat is a desktop-based application developed using Python, OpenCV, and PyQt5 for automatic vehicle license plate detection and recognition. The system utilizes computer vision techniques and template matching algorithms to identify license plate characters from vehicle images.
 
-The system detects vehicle plates automatically, segments each character, and recognizes the characters using template matching.
+The application provides a complete recognition pipeline, starting from plate localization, image preprocessing, character segmentation, and ending with license plate recognition and performance evaluation.
 
-## Objectives
+---
 
-* Detect vehicle license plates automatically
-* Extract plate regions from images
-* Segment individual characters
-* Recognize plate characters using template matching
+## 2. Project Objectives
 
-## Dataset
+The main objectives of this project are:
+
+* Detect vehicle license plates automatically from vehicle images.
+* Extract the license plate region accurately.
+* Segment individual characters from the detected plate.
+* Recognize alphanumeric characters using template matching techniques.
+* Evaluate system performance using a prepared dataset.
+
+---
+
+## 3. System Architecture
+
+### Block Diagram
+
+![Block Diagram](Blok_Diagram.drawio.png)
+
+### System Flowchart
+
+![Flowchart](Flowchart.drawio.png)
+
+---
+
+## 4. Dataset Description
 
 ### Vehicle Dataset
 
-* 29 vehicle images
+The vehicle dataset consists of 29 vehicle images containing various license plate formats and image conditions. The ground truth information is stored in the filename of each image.
+
+| Parameter        | Description                             |
+| ---------------- | --------------------------------------- |
+| Number of Images | 29                                      |
+| File Format      | JPG                                     |
+| Ground Truth     | License plate number stored in filename |
 
 ### Template Dataset
 
-* 116 character templates
+The template dataset contains character templates used for recognition through template matching.
 
-## Methodology
+| Parameter           | Description                        |
+| ------------------- | ---------------------------------- |
+| Total Templates     | 116                                |
+| Character Types     | A–Z and 0–9                        |
+| Template Variations | Multiple styles for each character |
+| Image Format        | JPG                                |
 
-1. Image Acquisition
-2. Plate Localization
-3. Grayscale Conversion
-4. Gaussian Blur
-5. Canny Edge Detection
-6. Otsu Thresholding
-7. Character Segmentation
-8. Template Matching
-9. Result Display
+---
 
-## Conclusion
+## 5. Methodology
 
-DetecPlat successfully demonstrates automatic vehicle license plate recognition using image processing and template matching techniques.
+The recognition process is performed through the following stages:
+
+### 5.1 Image Acquisition
+
+Vehicle images are loaded into the system as the primary input for processing.
+
+### 5.2 License Plate Localization
+
+The license plate region is detected using:
+
+* CLAHE (Contrast Limited Adaptive Histogram Equalization)
+* Gaussian Blur
+* Canny Edge Detection
+* Morphological Operations
+* Contour Detection
+
+### 5.3 Plate Preprocessing
+
+The extracted plate image is enhanced through:
+
+* Grayscale Conversion
+* Gaussian Blur
+* Canny Edge Detection
+* Otsu Thresholding
+
+### 5.4 Character Segmentation
+
+Individual characters are isolated from the plate image using contour analysis and filtering techniques.
+
+### 5.5 Character Recognition
+
+Each segmented character is compared against the template dataset using Template Matching based on Normalized Cross Correlation.
+
+### 5.6 Result Generation
+
+Recognized characters are combined to generate the final license plate number.
+
+---
+
+## 6. Technologies Used
+
+The project was developed using the following technologies:
+
+| Technology   | Purpose                                   |
+| ------------ | ----------------------------------------- |
+| Python       | Main programming language                 |
+| OpenCV       | Image processing and computer vision      |
+| NumPy        | Numerical computation                     |
+| PyQt5        | Graphical User Interface (GUI)            |
+| Git & GitHub | Version control and project documentation |
+
+---
+
+## 7. System Features
+
+The implemented system provides several key features:
+
+* Automatic license plate detection.
+* Multi-stage image preprocessing.
+* Character segmentation.
+* Template matching-based recognition.
+* Visual processing pipeline display.
+* Dataset accuracy evaluation.
+* User-friendly graphical interface.
+
+---
+
+## 8. Expected Results
+
+The system is expected to:
+
+* Detect vehicle license plates automatically.
+* Recognize alphanumeric characters accurately.
+* Provide visualization of each image processing stage.
+* Evaluate recognition performance on the available dataset.
+
+---
+
+## 9. Conclusion
+
+DetecPlat successfully demonstrates the implementation of computer vision techniques for automatic vehicle license plate recognition. By combining image preprocessing, character segmentation, and template matching, the system provides an effective solution for recognizing vehicle license plates and evaluating recognition performance using a prepared dataset.
+
+---
+
+## 10. Repository Information
+
+**GitHub Repository:**
+https://github.com/ratuqra/DetecPlat
+
+**Documentation Website:**
+https://ratuqra.github.io/DetecPlat/
